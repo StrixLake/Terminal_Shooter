@@ -13,7 +13,7 @@ int main()
 	Frame.ships[0] = &ship;
 	//std::cin.get();
 	Frame.draw();
-	//std::cin.get();
+	std::cin.get();
 	Frame.update();
 	std::cin.get();
 	Frame.draw();

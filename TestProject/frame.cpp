@@ -29,19 +29,16 @@ void frame::draw() {
 
 void frame::update() 
 {
-	for (int i = 0, ship_point_x, ship_point_y; i < num_of_ships; ++i) 
+	for (int i = 0; i < num_of_ships; ++i)
 	{
-		for (int j = 0; j < ships[i]->hitpoint_numbers; ++j) 
+		for (int j = 0, ship_x, ship_y, des_pointx = 0, des_pointy = 0; j < ships[i]->hitpoint_numbers; ++j)
 		{
-			ship_point_x = ships[i]->hitpoints[j][0];
-			ship_point_y = ships[i]->hitpoints[j][1];
-			for (int desig_rows = 0; desig_rows < ships[i]->design_rows; ++desig_rows)
-			{
-				for (int y = 0; y < ships[i]->design_col[desig_rows]; ++y)
-				{
-					grid[ship_point_y][ship_point_x] = static_cast<char> (ships[i]->design[desig_rows][y]);
-				}
-			}
+			
+			ship_x = ships[i]->hitpoints[j][0];
+			ship_y = ships[i]->hitpoints[j][1];
+			grid[ship_y][ship_x] = ships[i]->design[des_pointy][des_pointx];
+			++des_pointx;
+			if (des_pointx == ships[i]->design_col[des_pointy]) { des_pointx = 0; ++des_pointy; }
 		}
 	}
 }
