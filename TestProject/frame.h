@@ -22,5 +22,8 @@ private:
 	void clear();
 	std::string row;
 	void reset();
+	void move_objects();
+	void move_ships();
+	void move_bullets();
 };
 

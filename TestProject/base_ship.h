@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include "windows.h"
+#include "winuser.h"
 using std::string;
 #ifndef YAXIS
 #define YAXIS 50
@@ -19,7 +21,7 @@ public:
 	int* design_col = new int[design_rows];
 	int** hitpoints;
 	int hitpoint_numbers;
-	virtual void move(char direction){}
+	virtual void move(){}
 	virtual int hit() { return 1; }
 	virtual void update_hitpoints() {}
 };

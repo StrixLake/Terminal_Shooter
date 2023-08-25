@@ -42,22 +42,11 @@ void player_ship::update_hitpoints() {
 }
 
 
-void player_ship::move(char direction)
+void player_ship::move()
 {
-	switch (direction)
-	{
-	case('w'):
-		if (y_coordinates > 0) { --y_coordinates; }
-		break;
-	case('a'):
-		if (x_coordinates > 0) { x_coordinates -= 2; }
-		break;
-	case('s'):
-		if (y_coordinates < YAXIS) { ++y_coordinates; }
-		break;
-	case('d'):
-		if (x_coordinates < XAXIS) { x_coordinates += 2; }
-		break;
-	}
+	if (GetAsyncKeyState(VK_UP) < 0 && y_coordinates > 0) { --y_coordinates; }
+	if (GetAsyncKeyState(VK_DOWN) < 0 && y_coordinates < YAXIS) { ++y_coordinates; }
+	if (GetAsyncKeyState(VK_RIGHT) < 0 && x_coordinates < XAXIS) { x_coordinates += 2; }
+	if (GetAsyncKeyState(VK_LEFT) < 0 && x_coordinates > 0) { x_coordinates -= 2; }
 	update_hitpoints();
 }

@@ -41,6 +41,7 @@ void frame::draw() {
 void frame::update() 
 {
 	reset();
+	move_objects();
 	for (int i = 0; i < num_of_ships; ++i)
 	{
 		for (int j = 0, ship_x, ship_y, des_pointx = 0, des_pointy = 0; j < ships[i]->hitpoint_numbers; ++j)
@@ -52,5 +53,18 @@ void frame::update()
 			++des_pointx;
 			if (des_pointx == ships[i]->design_col[des_pointy]) { des_pointx = 0; ++des_pointy; }
 		}
+	}
+}
+
+void frame::move_objects()
+{
+	move_ships();
+}
+
+void frame::move_ships()
+{
+	for (int i = 0; i < num_of_ships; ++i)
+	{
+		ships[i]->move();
 	}
 }
