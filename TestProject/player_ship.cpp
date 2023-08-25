@@ -11,10 +11,6 @@ player_ship::player_ship() {
 	design[1] = string("___/  \\___");
 	design[2] = string("/__________\\");
 	design[3] = string("/____________\\");
-//	design[0] = "/\\";
-//	design[1] = "___/  \\___";
-//	design[2] = "/__________\\";
-//	design[4] = "/____________\\";
 	design_col[0] = 2; design_col[1] = 10; design_col[2] = 12; design_col[3] = 14;
 
 	hitpoints = new int* [38];
@@ -43,4 +39,25 @@ void player_ship::update_hitpoints() {
 		hitpoints[i][1] = y_coordinates + 3;
 		++temp;
 	}
+}
+
+
+void player_ship::move(char direction)
+{
+	switch (direction)
+	{
+	case('w'):
+		if (y_coordinates > 0) { --y_coordinates; }
+		break;
+	case('a'):
+		if (x_coordinates > 0) { x_coordinates -= 2; }
+		break;
+	case('s'):
+		if (y_coordinates < YAXIS) { ++y_coordinates; }
+		break;
+	case('d'):
+		if (x_coordinates < XAXIS) { x_coordinates += 2; }
+		break;
+	}
+	update_hitpoints();
 }

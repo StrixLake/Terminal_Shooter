@@ -7,6 +7,7 @@ public:
 	player_ship();
 //	~player_ship();
 	void update_hitpoints();
+	void move(char direction);
 
 };
 
