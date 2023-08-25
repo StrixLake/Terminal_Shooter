@@ -127,13 +127,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bullet.cpp" />
     <ClCompile Include="enemy_ship.cpp" />
     <ClCompile Include="frame.cpp" />
     <ClCompile Include="player_ship.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base_ship.h" />
+    <ClInclude Include="bullet.h" />
     <ClInclude Include="enemy_ship.h" />
     <ClInclude Include="frame.h" />
     <ClInclude Include="player_ship.h" />

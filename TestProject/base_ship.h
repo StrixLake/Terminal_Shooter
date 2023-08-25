@@ -22,7 +22,7 @@ public:
 	int** hitpoints;
 	int hitpoint_numbers;
 	virtual void move(){}
-	virtual int hit() { return 1; }
+	virtual bool hit() { return true; }
 	virtual void update_hitpoints() {}
 };
 
