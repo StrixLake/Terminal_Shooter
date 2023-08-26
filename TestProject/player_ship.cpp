@@ -79,5 +79,5 @@ void player_ship::fire(bullet** bullets_fired, int* num_of_bullets)
 
 void player_ship::hit()
 {
-	--health;
+	health -= 5;
 }

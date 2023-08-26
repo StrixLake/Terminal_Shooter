@@ -72,5 +72,5 @@ void enemy_ship::fire(bullet** bullets_fired, int* num_of_bullets)
 
 void enemy_ship::hit()
 {
-	--health;
+	health -= 10;
 }
