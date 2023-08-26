@@ -76,6 +76,7 @@ void frame::move_objects()
 	move_ships();
 	move_bullets();
 	check_Hits();
+	check_health();
 }
 
 void frame::move_ships()
@@ -110,12 +111,25 @@ void frame::check_Hits()
 			{
 				delete_element(bullets_fired, &num_of_bullets, x);
 				--x;
+				ships[y]->hit();
 
 			}
 		}
 	}
 }
 
+void frame::check_health()
+{
+	for (int i = 0; i < num_of_ships; ++i)
+	{
+		if (ships[i]->health < 0)
+		{
+			std::cout << i << std::endl;
+			delete_element(ships, &num_of_ships, i);
+			--i;
+		}
+	}
+}
 
 void frame::delete_element(base_ship** ships, int* num_of_ships, int itemToDelete)
 {

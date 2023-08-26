@@ -1,14 +1,15 @@
 #include <iostream>
 #include "frame.h"
 #include "player_ship.h"
+#include "enemy_ship.h"
 
 
 int main()
 {
 	frame Frame;
-	player_ship ship;
-	Frame.num_of_ships = 1;
-	Frame.ships[0] = &ship;
+	Frame.ships[0] = new player_ship();
+	Frame.ships[1] = new enemy_ship();
+	Frame.num_of_ships = 2;
 	while (!GetAsyncKeyState(VK_ESCAPE)) {
 		Frame.draw();
 		Frame.update();

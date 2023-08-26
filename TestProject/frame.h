@@ -33,6 +33,7 @@ private:
 	void move_ships();
 	void move_bullets();
 	void check_Hits();
+	void check_health();
 	bool arrMatch(int* bulletPosition, int** shipHitpoints, int numOFHitpoints);
 	void delete_element(bullet** bullets_fired, int* num_of_bullets, int itemToDelete);
 	void delete_element(base_ship** ships, int* num_of_ships, int itemToDelete);

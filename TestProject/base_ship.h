@@ -19,7 +19,7 @@ public:
 	int y_coordinates;
 	string* design;
 	int design_rows;
-	int* design_col = new int[design_rows];
+	int* design_col;
 	int** hitpoints;
 	int hitpoint_numbers;
 	

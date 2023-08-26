@@ -7,6 +7,7 @@ player_ship::player_ship() {
 	
 	design = new string [4];
 	design_rows = 4;
+	design_col = new int[design_rows];
 	design[0] = string("/\\");
 	design[1] = string("___/  \\___");
 	design[2] = string("/__________\\");
@@ -21,6 +22,21 @@ player_ship::player_ship() {
 	update_hitpoints();
 
 }
+
+
+player_ship::~player_ship()
+{
+	for (int i = 0; i < hitpoint_numbers; ++i) {
+		delete[] hitpoints[i];
+	}
+	delete[] hitpoints;
+	hitpoints = nullptr;
+	delete[] design;
+	design = nullptr;
+	delete[] design_col;
+	design_col = nullptr;
+}
+
 
 void player_ship::update_hitpoints() {
 	hitpoints[0][0] = x_coordinates; hitpoints[0][1] = y_coordinates; hitpoints[1][0] = x_coordinates +1; hitpoints[1][1] = y_coordinates;
@@ -59,4 +75,9 @@ void player_ship::fire(bullet** bullets_fired, int* num_of_bullets)
 		bullets_fired[*num_of_bullets] = fired;
 		*num_of_bullets += 1;
 	}
+}
+
+void player_ship::hit()
+{
+	--health;
 }
