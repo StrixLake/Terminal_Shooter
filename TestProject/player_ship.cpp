@@ -50,3 +50,13 @@ void player_ship::move()
 	if (GetAsyncKeyState(VK_LEFT) < 0 && x_coordinates > 0) { x_coordinates -= 2; }
 	update_hitpoints();
 }
+
+void player_ship::fire(bullet** bullets_fired, int* num_of_bullets)
+{
+	if (GetAsyncKeyState(VK_SPACE) < 0 && *num_of_bullets < 99) 
+	{
+		bullet* fired = new bullet('w', x_coordinates, y_coordinates);
+		bullets_fired[*num_of_bullets] = fired;
+		*num_of_bullets += 1;
+	}
+}

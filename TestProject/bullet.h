@@ -13,7 +13,7 @@ class bullet
 public:
 	bullet(char fire_direction, int ship_Xcoordinate, int ship_Ycoordinate);
 	int* position;
-	int move();
+	void move();
 	~bullet();
 };
 
