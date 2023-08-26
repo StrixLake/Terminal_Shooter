@@ -84,7 +84,6 @@ void frame::move_ships()
 	{
 		ships[i]->move();
 		ships[i]->fire(bullets_fired, &num_of_bullets);
-		std::cout << num_of_bullets << std::endl;
 	}
 }
 
