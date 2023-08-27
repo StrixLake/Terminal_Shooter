@@ -3,8 +3,9 @@
 class enemy_ship : public base_ship
 {
 public:
-	enemy_ship();
+	enemy_ship(int x_start);
 	~enemy_ship();
+	int direction = 0;
 	void move();
 	void hit();
 	void update_hitpoints();

@@ -29,6 +29,11 @@ void frame::reset() {
 
 void frame::draw() {
 	clear();
+	if (ships[0]->isPlayer)
+	{
+		std::cout << "Health: " << ships[0]->health << "             " << std::endl;
+		std::cout << "Score: " << score << "    " << std::endl;
+	}
 	rowToPrint = "";
 	for (int i = 0; i < YAXIS; ++i) {
 		for (int j = 0; j < XAXIS; ++j) {
@@ -67,7 +72,9 @@ void frame::render_bullets()
 {
 	for (int i = 0; i < num_of_bullets; ++i)
 	{
-		grid[bullets_fired[i]->position[1]][bullets_fired[i]->position[0]] = '|';
+		if (bullets_fired[i] -> direction == 'a') { grid[bullets_fired[i]->position[1]][bullets_fired[i]->position[0]] = '/'; }
+		else if (bullets_fired[i]->direction == 'd') { grid[bullets_fired[i]->position[1]][bullets_fired[i]->position[0]] = '\\'; }
+		else { grid[bullets_fired[i]->position[1]][bullets_fired[i]->position[0]] = '|'; }
 	}
 }
 
@@ -102,7 +109,7 @@ void frame::check_Hits()
 	{
 		for (int x = 0; x < num_of_bullets; ++x)
 		{
-			if (bullets_fired[x]->position[0] < 0 || bullets_fired[x]->position[1] < 0 || bullets_fired[x]->position[0] > XAXIS || bullets_fired[x]->position[1] > YAXIS)
+			if (bullets_fired[x]->position[0] < 0 || bullets_fired[x]->position[1] < 0 || bullets_fired[x]->position[0] >= XAXIS || bullets_fired[x]->position[1] >= YAXIS)
 			{
 				delete_element(bullets_fired, &num_of_bullets, x);
 				--x;
@@ -124,7 +131,6 @@ void frame::check_health()
 	{
 		if (ships[i]->health < 0)
 		{
-			std::cout << i << std::endl;
 			delete_element(ships, &num_of_ships, i);
 			--i;
 		}
@@ -140,6 +146,7 @@ void frame::delete_element(base_ship** ships, int* num_of_ships, int itemToDelet
 		ships[i] = ships[i + 1];
 	}
 	-- * num_of_ships;
+	++score;
 }
 
 void frame::delete_element(bullet** bullets_fired, int* num_of_bullets, int itemToDelete)

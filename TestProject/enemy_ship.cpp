@@ -1,10 +1,11 @@
 #include "enemy_ship.h"
 
-enemy_ship::enemy_ship()
+enemy_ship::enemy_ship(int x_start)
 {
 	health = 100;
-	x_coordinates = 25;
-	y_coordinates = 10;
+	x_coordinates = x_start;
+	y_coordinates = 5;
+	isPlayer = 0;
 
 	design = new string[4];
 	design_rows = 4;
@@ -62,12 +63,39 @@ void enemy_ship::update_hitpoints()
 
 void enemy_ship::move()
 {
-
+	if (y_coordinates == 15)
+	{
+		if (direction == 0) ++x_coordinates;
+		if (direction == 1) --x_coordinates;
+		if (x_coordinates == 25) direction = 0;
+		if (x_coordinates == 200) direction = 1;
+	}
+	else 
+		++y_coordinates;
+	update_hitpoints();
+	
 }
 
 void enemy_ship::fire(bullet** bullets_fired, int* num_of_bullets)
 {
-	
+	if (*num_of_bullets < 499)
+	{
+		static int timesCalled = 0;
+		if (timesCalled > 25)
+		{
+			bullet* fired = new bullet('a', x_coordinates, y_coordinates);
+			bullets_fired[*num_of_bullets] = fired;
+			*num_of_bullets += 1;
+			fired = new bullet('s', x_coordinates +9, y_coordinates);
+			bullets_fired[*num_of_bullets] = fired;
+			*num_of_bullets += 1;
+			fired = new bullet('d', x_coordinates +19, y_coordinates);
+			bullets_fired[*num_of_bullets] = fired;
+			*num_of_bullets += 1;
+			if (timesCalled == 35) { timesCalled = 0; }
+		}
+		++timesCalled;
+	}
 }
 
 void enemy_ship::hit()

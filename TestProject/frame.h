@@ -15,18 +15,19 @@ public:
 	frame();
 	void update();
 	void draw();
+	void reset();
+	void clear();
 	
+	int score = 0;
 	char* grid[YAXIS];
-	base_ship** ships = new base_ship * [10];
+	base_ship** ships = new base_ship*[10];
 	int num_of_ships = 0;
 
 private:
 	std::string rowToPrint;
 	int num_of_bullets = 0;
-	bullet** bullets_fired = new bullet* [100];
+	bullet** bullets_fired = new bullet* [500];
 
-	void clear();
-	void reset();
 	void render_ship();
 	void render_bullets();
 	void move_objects();

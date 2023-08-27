@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 #include "windows.h"
 #include "winuser.h"
@@ -22,6 +23,7 @@ public:
 	int* design_col;
 	int** hitpoints;
 	int hitpoint_numbers;
+	int isPlayer;
 	
 	virtual void move(){}
 	virtual void hit() {}

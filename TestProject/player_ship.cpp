@@ -4,6 +4,7 @@ player_ship::player_ship() {
 	health = 100;
 	x_coordinates = 150;
 	y_coordinates = 10;
+	isPlayer = 1;
 	
 	design = new string [4];
 	design_rows = 4;
@@ -35,6 +36,7 @@ player_ship::~player_ship()
 	design = nullptr;
 	delete[] design_col;
 	design_col = nullptr;
+	std::cout << "object destroyed" << std::endl;
 }
 
 
@@ -69,7 +71,7 @@ void player_ship::move()
 
 void player_ship::fire(bullet** bullets_fired, int* num_of_bullets)
 {
-	if (GetAsyncKeyState(VK_SPACE) < 0 && *num_of_bullets < 99) 
+	if (GetAsyncKeyState(VK_SPACE) < 0 && *num_of_bullets < 499) 
 	{
 		bullet* fired = new bullet('w', x_coordinates, y_coordinates);
 		bullets_fired[*num_of_bullets] = fired;
@@ -79,5 +81,5 @@ void player_ship::fire(bullet** bullets_fired, int* num_of_bullets)
 
 void player_ship::hit()
 {
-	health -= 5;
+	health -= 1;
 }
